@@ -1,0 +1,10 @@
+<h1>Ваша корзина</h1>
+<% if @cart_items.any? %>
+  <ul>
+    <% @cart_items.each do |item| %>
+      <li><%= item.name %> - <%= number_to_currency(item.price) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Ваша корзина пуста.</p>
+<% end %>
