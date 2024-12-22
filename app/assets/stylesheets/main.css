@@ -318,30 +318,111 @@ footer a:hover {
 }
 
 .dropdown-menu {
-  display: none; /* Скрыто по умолчанию */
+  display: none;
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #d2741b;
-  border: 1px solid #ccc;
+  background-color: #d2741b; /* Цвет фона выпадающего меню */
+  border: none; /* Убираем границу */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  border-radius: 15px;
+  border-radius: 0; /* Убираем закругленные углы */
 }
 
 .profile-menu:hover .dropdown-menu {
   display: block;
+  border-radius: 15px;
 }
 
 .dropdown-item {
   padding: 10px 15px;
-  text-decoration: none; /* Убираем подчеркивание */
-  color: #fff; /* Цвет текста */
-  display: block; /* Отображение в блоке */
-  transition: background-color 0.3s; /* Плавное изменение цвета фона */
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  width: 100%; /* Занимает всю ширину родительского контейнера */
+  box-sizing: border-box; /* Учитывает отступы и границы в ширине */
+  transition: background-color 0.3s;
+  border: none; /* Убираем границу у элементов меню */
+  background-color: transparent; /* Убираем белый фон по умолчанию */
+
 }
 
 .dropdown-item:hover {
-  background-color: #b35814; 
-  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон при наведении */
+
+}
+
+.dropdown-item:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Разделитель между элементами */
+}
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4e1c1;
+}
+
+.signup-form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+}
+
+.form-title {
+  text-align: center;
+  color: #4b3b2f;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #4b3b2f;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #d2b097;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.form-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #d2741b;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-button:hover {
+  background-color: #b35814;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-button {
+  color: #d2741b;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-button:hover {
+  text-decoration: underline;
 }
