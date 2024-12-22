@@ -1,11 +1,9 @@
-<% @products.each do |product| %>
-  <div class="product-item">
-    <img src="<%= product.image_url %>" alt="<%= product.name %>">
-    <div class="product-info">
-      <h2 class="product-title"><%= product.name %></h2>
-      <p class="product-description"><%= product.description %></p>
-      <p class="product-price"><%= number_to_currency(product.price) %></p>
-      <%= button_to 'Добавить в корзину', url_for(controller: 'cart', action: 'add', product_id: product.id), method: :post, class: 'button' %>
-    </div>
+<div class="product-item">
+  <img src="<%= product.image_url %>" alt="<%= product.name %>">
+  <div class="product-info">
+    <h2 class="product-title"><%= product.name %></h2>
+    <p class="product-description"><%= product.description %></p>
+    <p class="product-price"><%= number_to_currency(product.price) %></p>
+    <%= button_to 'Добавить в корзину', url_for(controller: 'cart', action: 'add', product_id: product.id), method: :post, class: 'button' %>
   </div>
-<% end %>
+</div>
