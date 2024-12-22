@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show] do
     post 'add_to_cart', to: 'cart#add', as: 'add_to_cart' # Маршрут для добавления товара в корзину
   end
+  
+  get "/search", to: "search#search" # Маршрут для отображения поиска товаров
 
   # Корзина
   get "/cart", to: "cart#index" # Маршрут для отображения корзины

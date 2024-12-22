@@ -11,7 +11,9 @@
 <header>
   <nav>
     <div class="logo">
+    <a href="/" class="logo_button">
       <h1>BestMarket</h1>
+    </a>
     </div>
     <form action="/search" method="get">
     <div class="search-bar">
@@ -42,10 +44,11 @@
 </header>
 
 <main>
-  <div class="hero">
-    <h2>Welcome to Our Marketplace!</h2>
-    <p>Explore the best products at unbeatable prices.</p>
-  </div>
+    <div class="hero">
+        <p>
+            <%= "#{@products.length} products found for request <span class='highlight'>#{@original_query}</span>".html_safe %>
+        </p>
+    </div>
 
   <div class="product-container">
     <% @products.each do |product| %>
