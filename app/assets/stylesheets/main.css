@@ -45,8 +45,10 @@ nav .logo h1 {
 
 /* Поисковая строка */
 .search-bar {
+  display: flex;
   flex-grow: 2;
   text-align: center;
+  justify-content: center;
 }
 
 .search-bar input {
@@ -55,6 +57,11 @@ nav .logo h1 {
   padding: 5px 15px;
   border: 1px solid #ccc;
   border-radius: 15px;
+}
+
+.search_button {
+  display: flex;
+  align-items: center;
 }
 
 /* Иконки */
