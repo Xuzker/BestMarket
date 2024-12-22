@@ -50,25 +50,52 @@ nav .logo h1 {
 /* Поисковая строка */
 .search-bar {
   display: flex;
-  flex-grow: 2;
   text-align: center;
   justify-content: center;
 }
 
 .search-bar input {
+  flex-grow: 1;
   width: 100%;
-  max-width: 500px;
   padding: 5px 15px;
   border: 1px solid #ccc;
   border-radius: 15px;
 }
 
 .search_button {
-  display: flex;
+  flex-grow: 1;
   align-items: center;
   background-color: transparent;
   border: transparent;
 }
+
+/* Список категорий */
+.category-select {
+  flex-grow: 1;
+  margin-right: 10px;
+  min-width: 100px;
+}
+
+.category-select select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d2b097;
+  border-radius: 5px;
+  font-size: 1em;
+  background-color: #fff;
+  color: #4b3b2f;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%234b3b2f"><path d="M7 10l5 5 5-5z"/></svg>'); /* Стрелка вниз */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+}
+
+.category-select select:focus {
+  outline: none;
+  border-color: #d2741b;
+}
+
 
 /* Иконки */
 .nav-icons ul {
@@ -439,3 +466,4 @@ footer a:hover {
 .login-button:hover {
   text-decoration: underline;
 }
+

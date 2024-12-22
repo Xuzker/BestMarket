@@ -16,8 +16,11 @@
     </a>
     </div>
     <form action="/search" method="get">
-    <div class="search-bar">
-        <input type="text" name="query" placeholder="Search for products...">
+      <div class="search-bar">
+        <div class="category-select">
+          <%= select_tag :category, options_for_select(@categories, @category), prompt: "Category" %>
+        </div>
+        <input type="text" name="query" value="<%= @original_query %>">
         <button class="search_button" type="submit">
           <%= image_tag "search.svg", alt: "Search" %>
         </button>
