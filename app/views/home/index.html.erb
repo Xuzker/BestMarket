@@ -20,7 +20,17 @@
       <ul>
         <li><a href="/"><i class="fas fa-home"></i></a></li>
         <li><a href="/cart"><i class="fas fa-shopping-cart"></i></a></li>
-        <li><a href="/users/sign_in"><i class="fas fa-user"></i></a></li>
+        <li class="profile-menu">
+          <a href="#" id="profileIcon"><i class="fas fa-user"></i></a>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <% if user_signed_in? %>
+              <%= link_to 'Профиль', profile_path, class: 'dropdown-item' %>
+              <%= button_to 'Выйти', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+            <% else %>
+              <%= link_to 'Войти', '/users/sign_in', class: 'dropdown-item' %>
+            <% end %>
+          </div>
+        </li>
       </ul>
     </div>
   </nav>
@@ -34,14 +44,7 @@
 
   <div class="product-container">
     <% @products.each do |product| %>
-      <div class="product-item">
-        <img src="<%= product.image_url %>" alt="<%= product.name %>">
-        <div class="product-info">
-          <p class="product-title"><%= product.name %></p>
-          <p class="product-description"><%= product.description %></p>
-          <p class="product-price"><%= number_to_currency(product.price) %></p>
-        </div>
-      </div>
+      <%= render partial: 'products/product', locals: { product: product } %>
     <% end %>
   </div>
 </main>

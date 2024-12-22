@@ -306,3 +306,35 @@ footer a:hover {
 .forgot-password-links a:hover {
   text-decoration: underline;
 }
+
+
+.profile-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-menu a {
+  text-decoration: none; /* Убираем подчеркивание */
+}
+
+.dropdown-menu {
+  display: none; /* Скрыто по умолчанию */
+  position: absolute;
+  top: 100%; /* Позиционируем меню под значком */
+  right: 0; /* Выравнивание по правому краю */
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Чтобы меню было поверх других элементов */
+}
+
+.dropdown-item {
+  padding: 10px 15px;
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0; /* Цвет при наведении */
+}

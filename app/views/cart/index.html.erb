@@ -1,8 +1,12 @@
-<h1>Ваша корзина</h1>
+<h1>Корзина</h1>
+
 <% if @cart_items.any? %>
-  <ul>
+  <ul id="cart-items-list">
     <% @cart_items.each do |item| %>
-      <li><%= item.name %> - <%= number_to_currency(item.price) %></li>
+      <li id="cart-item-<%= item.id %>">
+        <%= item.product.name %> - <%= item.quantity %> шт.
+        <%= link_to 'Удалить', cart_item_path(item), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить этот товар?' }, remote: true, class: 'button' %>
+      </li>
     <% end %>
   </ul>
 <% else %>

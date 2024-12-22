@@ -1,0 +1,6 @@
+document.getElementById("cart-item-<%= cart_item.id %>").remove();
+
+if (document.getElementById("cart-items-list").children.length === 0) {
+  const cartList = document.getElementById("cart-items-list");
+  cartList.innerHTML = "<p>Ваша корзина пуста.</p>";
+}
