@@ -23,12 +23,6 @@ class CartController < ApplicationController
   end
 
   def destroy
-    cart_item = current_user.cart_items.find(params[:id])
-    cart_item.destroy
 
-    respond_to do |format|
-      format.html { redirect_to cart_path, notice: 'Товар удален из корзины.' }
-      format.js   # Это будет искать файл destroy.js.erb
-    end
   end
 end

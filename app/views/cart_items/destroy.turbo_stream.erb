@@ -1,0 +1,5 @@
+<% if @cart_item.quantity > 0 %>
+  <%= turbo_stream.replace "cart-item-#{@cart_item.id}", partial: "cart_items/cart_item", locals: { item: @cart_item } %>
+<% else %>
+  <%= turbo_stream.remove "cart-item-#{@cart_item.id}" %>
+<% end %>

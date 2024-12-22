@@ -1,0 +1,4 @@
+<li id="cart-item-<%= item.id %>">
+  <%= item.product.name %> - <%= item.quantity %> шт.
+  <%= link_to 'Удалить', cart_item_path(item), method: :delete, data: { confirm: 'Вы уверены?', "turbo-method": :delete } %>
+</li>

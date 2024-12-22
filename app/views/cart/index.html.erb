@@ -1,11 +1,10 @@
 <h1>Корзина</h1>
-
 <% if @cart_items.any? %>
   <ul id="cart-items-list">
     <% @cart_items.each do |item| %>
       <li id="cart-item-<%= item.id %>">
         <%= item.product.name %> - <%= item.quantity %> шт.
-        <%= link_to 'Удалить', cart_item_path(item), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить этот товар?' }, remote: true, class: 'button' %>
+        <%= link_to 'Удалить', cart_item_path(item), method: :delete, data: { confirm: 'Вы уверены?', "turbo-method": :delete }, class: 'remove-button' %>
       </li>
     <% end %>
   </ul>
