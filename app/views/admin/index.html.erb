@@ -1,0 +1,26 @@
+<%= render 'layouts/header' %>
+
+<main>
+  <div>
+    <h2>Поиск по названию товара</h2>
+    <%= form_with url: admin_path, method: :get, local: false do %>
+      <input type="text" name="query" placeholder="Введите название товара..." value="<%= params[:query] %>">
+      <button type="submit">Поиск</button>
+    <% end %>
+  </div>
+
+  <div>
+    <h2>Сортировка по категории</h2>
+    <%= form_with url: admin_path, method: :get, local: false, id: 'category-filter-form' do %>
+      <%= select_tag :category, options_for_select(@categories, params[:category]), prompt: "Выберите категорию", onchange: 'this.form.submit();' %>
+    <% end %>
+  </div>
+
+  <div id="products-table">
+    <%= render 'products_table', products: @products %>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2024 BestMarket</p>
+</footer>

@@ -23,4 +23,7 @@ Rails.application.routes.draw do
 
   # Настройка маршрутов для Devise
   devise_for :users, controllers: { passwords: 'users/passwords' }
+
+  # Админ панель
+  get '/admin', to: 'admin#index', as: 'admin'
 end

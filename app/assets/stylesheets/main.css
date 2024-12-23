@@ -580,3 +580,42 @@ h1 {
     font-size: 1.1em;
   }
 }
+
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-header {
+  background-color: #f2f2f2;
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.product-row {
+  border: 1px solid #ddd;
+  height: 60px;
+}
+
+.product-row:hover {
+  background-color: #e4b007;
+}
+
+.image-cell, .name-cell, .description-cell, .price-cell, .category-cell, .actions-cell {
+  padding: 10px;
+  border: 1px solid #ddd;
+  height: 60px;
+}
+
+.image-cell { width: 15%;}
+.name-cell { width: 25%; }
+.description-cell { width: 30%; }
+.price-cell { width: 15%; }
+.category-cell { width: 10%; }
+.actions-cell { width: 5%; }
+
+.image-cell img {
+  max-width: 100%;
+  height: auto;
+}

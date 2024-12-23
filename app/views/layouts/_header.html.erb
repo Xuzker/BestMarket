@@ -1,0 +1,28 @@
+<header>
+  <nav>
+    <div class="logo">
+        <a href="/" class="logo_button">
+            <h1>BestMarket</h1>
+        </a>
+    </div>
+    <h1>Управление товарами</h1>
+    <div class="nav-icons">
+      <ul>
+        <li><a href="<%= admin_path %>"><i class="fas fa-cog"></i></a></li>
+        <li><a href="/"><i class="fas fa-home"></i></a></li>
+        <li><a href="<%= cart_path %>"><i class="fas fa-shopping-cart"></i></a></li>
+        <li class="profile-menu">
+          <a href="#" id="profileIcon"><i class="fas fa-user"></i></a>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <% if user_signed_in? %>
+              <%= link_to 'Профиль', profile_path, class: 'dropdown-item' %>
+              <%= button_to 'Выйти', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+            <% else %>
+              <%= link_to 'Войти', '/users/sign_in', class: 'dropdown-item' %>
+            <% end %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

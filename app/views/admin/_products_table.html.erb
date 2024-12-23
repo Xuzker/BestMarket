@@ -1,0 +1,26 @@
+<table class="products-table">
+  <thead>
+    <tr>
+      <th class="table-header image-header">Image</th>
+      <th class="table-header name-header">Name</th>
+      <th class="table-header description-header">Description</th>
+      <th class="table-header price-header">Price</th>
+      <th class="table-header category-header">Category</th>
+      <th class="table-header actions-header">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% products.each do |product| %>
+      <tr class="product-row">
+        <td class="image-cell"><%= image_tag(product.image_url, size: "100x100") if product.image_url.present? %></td>
+        <td class="name-cell"><%= product.name %></td>
+        <td class="description-cell"><%= product.description %></td>
+        <td class="price-cell"><%= number_to_currency(product.price) %></td>
+        <td class="category-cell"><%= product.category %></td>
+        <td class="actions-cell">
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
