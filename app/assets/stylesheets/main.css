@@ -467,3 +467,116 @@ footer a:hover {
   text-decoration: underline;
 }
 
+/* Контейнер для корзины */
+#cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item h3 {
+  font-size: 1.5em;
+  color: #4b3b2f;
+}
+
+.cart-item p {
+  font-size: 1.1em;
+  color: #6b4f33;
+}
+
+.cart-item-actions {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.cart-item .quantity-button {
+  padding: 8px 16px;
+  background-color: #d2741b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cart-item .quantity-button:hover {
+  background-color: #b35814;
+}
+
+/* Стили для общего отображения цены */
+#total-price {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#total-price h2 {
+  font-size: 1.5em;
+  color: #4b3b2f;
+}
+
+#total-price p {
+  font-size: 1.2em;
+  color: #d2741b;
+  font-weight: bold;
+}
+
+/* Пустая корзина */
+#cart-items p {
+  font-size: 1.2em;
+  color: #6b4f33;
+  text-align: center;
+}
+
+/* Общие стили для страницы корзины */
+h1 {
+  text-align: center;
+  font-size: 2em;
+  color: #4b3b2f;
+  margin-bottom: 30px;
+}
+
+#cart-items {
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .cart-item {
+    padding: 10px;
+  }
+
+  .cart-item h3 {
+    font-size: 1.3em;
+  }
+
+  .cart-item p {
+    font-size: 1em;
+  }
+
+  .cart-item-actions {
+    gap: 8px;
+  }
+
+  .cart-item .quantity-button {
+    padding: 6px 12px;
+  }
+
+  #total-price h2 {
+    font-size: 1.3em;
+  }
+
+  #total-price p {
+    font-size: 1.1em;
+  }
+}

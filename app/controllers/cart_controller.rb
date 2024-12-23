@@ -27,13 +27,11 @@ class CartController < ApplicationController
   def destroy
     cart_item = current_user.cart_items.find(params[:id])
 
-    if cart_item.destroy
-      respond_to do |format|
-        format.html { redirect_to cart_path, notice: 'Товар удалён из корзины.' }
-        format.turbo_stream
-      end
-    else
-      redirect_to cart_path, alert: 'Не удалось удалить товар из корзины.'
-    end
+
+    return redirect_to cart_path, alert: 'Не удалось удалить товар из корзины.' unless  cart_item.save
+
+    redirect_to cart_path
+
+
   end
 end

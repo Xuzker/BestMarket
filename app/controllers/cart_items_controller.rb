@@ -12,10 +12,9 @@ class CartItemsController < ApplicationController
       notice_message = 'Товар удален из корзины.'
     end
 
-    respond_to do |format|
-      format.html { redirect_to cart_path, notice: notice_message }
-      format.turbo_stream
-    end
+    return redirect_to cart_path, alert: notice_message unless @cart_item.save
+
+    redirect_to cart_path
   end
 
 end
