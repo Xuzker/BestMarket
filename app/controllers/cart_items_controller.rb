@@ -17,4 +17,5 @@ class CartItemsController < ApplicationController
       format.turbo_stream
     end
   end
+
 end

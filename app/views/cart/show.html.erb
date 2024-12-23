@@ -1,0 +1,15 @@
+<h1>Корзина</h1>
+
+<% if @cart_items.any? %>
+  <div id="cart-items">
+    <% @cart_items.each do |item| %>
+      <%= render partial: "cart_items/cart_item", locals: { item: item } %>
+    <% end %>
+  </div>
+
+  <div id="total-price">
+    <%= render partial: "cart/total_price", locals: { total_price: @cart_items.sum { |item| item.product.price * item.quantity } } %>
+  </div>
+<% else %>
+  <p>Ваша корзина пуста.</p>
+<% end %>

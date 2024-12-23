@@ -1,0 +1,10 @@
+<turbo-stream action="update" target="cart-item-<%= @cart_item.id %>">
+  <template>
+    <%= render partial: "cart_item", locals: { item: @cart_item } %>
+  </template>
+</turbo-stream>
+<turbo-stream action="update" target="total-price">
+  <template>
+    <h2>Итого: <%= number_to_currency(current_user.cart_items.sum { |item| item.product.price * item.quantity }) %></h2>
+  </template>
+</turbo-stream>

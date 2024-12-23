@@ -1,4 +1,9 @@
-<li id="cart-item-<%= item.id %>">
-  <%= item.product.name %> - <%= item.quantity %> шт.
-  <%= link_to 'Удалить', cart_item_path(item), method: :delete, data: { confirm: 'Вы уверены?', "turbo-method": :delete } %>
-</li>
+<div id="cart-item-<%= item.id %>" class="cart-item">
+  <h3><%= item.product.name %></h3>
+  <p>Количество: <%= item.quantity %></p>
+  <p>Цена: <%= number_to_currency(item.product.price * item.quantity) %></p>
+  <div class="cart-item-actions">
+    <%= button_to '-', cart_item_path(item), method: :delete,  class: 'quantity-button' %>
+    <%= button_to '+', product_add_to_cart_path(item.product), method: :post, class: 'quantity-button' %>
+  </div>
+</div>
