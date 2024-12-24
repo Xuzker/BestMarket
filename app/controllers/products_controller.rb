@@ -6,6 +6,10 @@ class ProductsController < ApplicationController
   
     def create
       @product = Product.new(product_params)
+
+      if params[:new_category].present?
+        @product.category = params[:new_category]
+      end
   
       if @product.save
         respond_to do |format|
@@ -15,7 +19,7 @@ class ProductsController < ApplicationController
       else
         @categories = Product.pluck(:category).uniq
         respond_to do |format|
-          format.html { redirect_to admin_path, notice: 'Product not created' }
+          format.html { redirect_to admin_path, notice: 'Product was not created' }
           format.js 
         end
       end
