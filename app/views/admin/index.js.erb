@@ -1,1 +1,5 @@
 document.getElementById('products-table').innerHTML = '<%= j render "products_table", products: @products %>';
+
+var categorySelect = document.getElementById('category-filter-form').querySelector('select');
+categorySelect.innerHTML = '<option value="">Select a category</option>' +
+'<%= j options_for_select(@categories, params[:category]) %>';
