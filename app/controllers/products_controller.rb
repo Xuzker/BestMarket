@@ -25,6 +25,34 @@ class ProductsController < ApplicationController
       end
     end
   
+    def update
+      @product = Product.find(params[:id])
+      
+      if @product.update(product_params)
+        respond_to do |format|
+          format.json { render json: { success: true } }
+        end
+      else
+        respond_to do |format|
+          format.json { render json: { success: false, errors: @product.errors.full_messages } }
+        end
+      end
+    end
+  
+    def destroy
+      @product = Product.find(params[:id])
+      
+      if @product.destroy
+        respond_to do |format|
+          format.json { render json: { success: true } }
+        end
+      else
+        respond_to do |format|
+          format.json { render json: { success: false, errors: @product.errors.full_messages } }
+        end
+      end
+    end
+  
     private
   
     def product_params

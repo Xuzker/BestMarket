@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   # Ресурсы для продуктов
-  resources :products, only: [:index, :show, :create] do
+  resources :products, only: [:index, :show, :create, :update, :destroy] do
     post 'add_to_cart', to: 'cart#add', as: 'add_to_cart' # Добавление товара в корзину
   end
 
