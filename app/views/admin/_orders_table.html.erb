@@ -1,0 +1,67 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Date</th>
+      <th>Customer</th>
+      <th>Address</th>
+      <th>Total Amount</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.date.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= order.user.email %></td>
+        <td><%= order.address %></td>
+        <td>
+          <%= number_to_currency(order.order_items.sum { |item| item.price * item.quantity }) %>
+        </td>
+        <td>
+          <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#orderModal<%= order.id %>">
+            View Details
+          </button>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% orders.each do |order| %>
+  <div class="modal fade" id="orderModal<%= order.id %>" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Order #<%= order.id %> Details</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% order.order_items.each do |item| %>
+                <tr>
+                  <td><%= item.product.name %></td>
+                  <td><%= item.product.category %></td>
+                  <td><%= number_to_currency(item.price) %></td>
+                  <td><%= item.quantity %></td>
+                  <td><%= number_to_currency(item.price * item.quantity) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

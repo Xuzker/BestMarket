@@ -60,27 +60,47 @@
 <%= render 'layouts/header' %>
 
 <main>
-  <div>
-    <h2>Search by Product Name</h2>
-    <%= form_with url: admin_path, method: :get, local: false do %>
-      <input type="text" name="query" placeholder="Enter product name..." value="<%= params[:query] %>">
-      <button type="submit">Search</button>
+  <div class="view-switcher mb-4">
+    <%= form_with url: admin_path, method: :get, local: false, class: 'd-inline-block' do %>
+      <%= hidden_field_tag :view_type, 'products' %>
+      <%= submit_tag 'Products Table', class: "btn #{params[:view_type] != 'orders' ? 'btn-primary' : 'btn-secondary'}" %>
+    <% end %>
+
+    <%= form_with url: admin_path, method: :get, local: false, class: 'd-inline-block' do %>
+      <%= hidden_field_tag :view_type, 'orders' %>
+      <%= submit_tag 'Orders Table', class: "btn #{params[:view_type] == 'orders' ? 'btn-primary' : 'btn-secondary'}" %>
     <% end %>
   </div>
 
-  <div>
-    <h2>Sort by Category</h2>
-    <%= form_with url: admin_path, method: :get, local: false, id: 'category-filter-form' do %>
-      <%= select_tag :category, options_for_select(@categories, params[:category]), prompt: "Select a category", onchange: 'this.form.submit();' %>
+  <% if params[:view_type] != 'orders' %>
+    <div>
+      <h2>Search by Product Name</h2>
+      <%= form_with url: admin_path, method: :get, local: false do %>
+        <%= hidden_field_tag :view_type, 'products' %>
+        <input type="text" name="query" placeholder="Enter product name..." value="<%= params[:query] %>">
+        <button type="submit">Search</button>
+      <% end %>
+    </div>
+
+    <div>
+      <h2>Sort by Category</h2>
+      <%= form_with url: admin_path, method: :get, local: false, id: 'category-filter-form' do %>
+        <%= hidden_field_tag :view_type, 'products' %>
+        <%= select_tag :category, options_for_select(@categories, params[:category]), prompt: "Select a category", onchange: 'this.form.submit();' %>
+      <% end %>
+    </div>
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProductModal">
+      Add Product
+    </button>
+  <% end %>
+
+  <div id="content-table">
+    <% if params[:view_type] == 'orders' %>
+      <%= render 'orders_table', orders: @orders %>
+    <% else %>
+      <%= render 'products_table', products: @products %>
     <% end %>
-  </div>
-
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProductModal">
-    Add Product
-  </button>
-
-  <div id="products-table">
-    <%= render 'products_table', products: @products %>
   </div>
 </main>
 
