@@ -1,24 +1,139 @@
-<h1>Профиль пользователя</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketplace</title>
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<header>
+  <nav>
+    <div class="logo">
+      <a href="/" class="logo_button" id="logo-button">
+        <h1>BestMarket</h1>
+      </a>
+    </div>
+    <div class="nav-icons">
+      <ul>
+        <li><a href="<%= admin_path %>" title="Settings"><i class="fas fa-cog"></i></a></li>
+        <li><a href="/" title="Home"><i class="fas fa-home"></i></a></li>
+        <li><a href="<%= cart_path %>" title="Cart"><i class="fas fa-shopping-cart"></i></a></li>
+        <li class="profile-menu">
+          <a href="#" id="profileIcon"><i class="fas fa-user"></i></a>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <% if user_signed_in? %>
+              <%= link_to 'Профиль', profile_path, class: 'dropdown-item' %>
+              <%= button_to 'Выйти', destroy_user_session_path, method: :delete, class: 'dropdown-item btn btn-link' %>
+            <% else %>
+              <%= link_to 'Войти', '/users/sign_in', class: 'dropdown-item' %>
+            <% end %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
 
-<p><strong>Email:</strong> <%= @user.email %></p>
-<p><strong>Адрес:</strong> <%= @user.address %></p>
+<div class="profile-container">
+  <h1>User Profile</h1>
+  
+  <div class="user-info">
+    <p><strong>Email:</strong> <%= @user.email %></p>
+    <p><strong>Address:</strong> <%= @user.address %></p>
+  </div>
 
-<h2>История заказов</h2>
-<% if @orders.any? %>
-  <ul>
-    <% @orders.each do |order| %>
-      <li>
-        Заказ №<%= order.id %> от <%= order.date.strftime("%d.%m.%Y") %>
-        <ul>
-          <% order.order_items.each do |item| %>
-            <li><%= item.product.name %> - <%= item.quantity %> шт. по <%= item.price %> руб.</li>
-          <% end %>
-        </ul>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>У вас нет заказов.</p>
-<% end %>
+  <div class="orders-section">
+    <div class="orders-header" onclick="toggleOrders()">
+      <h2>Order History</h2>
+      <i class="fas fa-chevron-down" id="toggleIcon"></i>
+    </div>
+    <div class="orders-list" id="ordersList">
+      <% if @orders.any? %>
+        <% @orders.each do |order| %>
+          <div class="order-item">
+            <div class="order-header">
+              Order #<%= order.id %> from <%= order.created_at.strftime("%m/%d/%Y") %>
+            </div>
+            <div class="order-details">
+              <% order.order_items.each do |item| %>
+                <div class="order-product">
+                  <%= item.product.name %> - <%= item.quantity %> pcs at <%= number_to_currency(item.price) %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p>You have no orders.</p>
+      <% end %>
+    </div>
+  </div>
 
-<%= link_to 'Редактировать профиль', edit_profile_path %>
+  <a href="#" class="edit-profile-link" onclick="openEditModal(event)">Edit Profile</a>
+
+  <!-- Modal Window -->
+  <div id="editProfileModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Edit Profile</h2>
+        <span class="close" onclick="closeEditModal()">&times;</span>
+      </div>
+      
+      <%= form_with model: @user, url: update_profile_profile_path, local: true do |form| %>
+        <div class="form-group">
+          <%= form.label :email, 'Email' %>
+          <%= form.email_field :email, class: 'form-input' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :address, 'Address' %>
+          <%= form.text_field :address, class: 'form-input' %>
+        </div>
+
+        <div class="form-actions">
+          <%= form.submit 'Save', class: 'save-button' %>
+          <button type="button" class="cancel-button" onclick="closeEditModal()">Cancel</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2024 BestMarket</p>
+</footer>
+
+<script>
+function toggleOrders() {
+  const ordersList = document.getElementById('ordersList');
+  const icon = document.getElementById('toggleIcon');
+  
+  if (ordersList.style.display === 'block') {
+    ordersList.style.display = 'none';
+    icon.classList.remove('rotate');
+  } else {
+    ordersList.style.display = 'block';
+    icon.classList.add('rotate');
+  }
+}
+
+function openEditModal(event) {
+  event.preventDefault();
+  document.getElementById('editProfileModal').style.display = 'block';
+}
+
+function closeEditModal() {
+  document.getElementById('editProfileModal').style.display = 'none';
+}
+
+window.onclick = function(event) {
+  const modal = document.getElementById('editProfileModal');
+  if (event.target == modal) {
+    closeEditModal();
+  }
+}
+</script>
+</body>
+</html>
