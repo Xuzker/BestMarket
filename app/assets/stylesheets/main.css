@@ -360,6 +360,7 @@ footer a:hover {
 .dropdown-menu {
   display: none;
   position: absolute;
+  transform: translateX(-130px);
   top: 100%;
   right: 0;
   background-color: #d2741b; /* Цвет фона выпадающего меню */

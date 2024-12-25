@@ -22,7 +22,7 @@ class CartController < ApplicationController
       current_user.cart_items.destroy_all # Очистка корзины после оформления заказа
       redirect_to orders_path, notice: 'Заказ успешно оформлен.'
     else
-      redirect_to cart_path, alert: 'Не удалось оформить заказ.'
+      redirect_to cart_path, alert: 'Не удалось оформить заказ. Заполните все поля в профиле!'
     end
   end
 
