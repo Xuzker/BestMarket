@@ -1,0 +1,19 @@
+$('#addProductModal').modal('hide');
+
+<% if @product.errors.any? %>
+  alert('Ошибка при создании товара: <%= j @product.errors.full_messages.join(", ") %>');
+<% else %>
+  // Обновляем таблицу товаров
+  const productRow = `
+    <tr>
+      <td><%= j @product.name %></td>
+      <td><%= j @product.description %></td>
+      <td><%= number_to_currency(@product.price) %></td>
+      <td><%= j @product.category %></td>
+      <td>
+        
+      </td>
+    </tr>
+  `;
+  $('#products-table tbody').append(productRow);
+<% end %>

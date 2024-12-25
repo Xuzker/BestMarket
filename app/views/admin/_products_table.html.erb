@@ -1,0 +1,172 @@
+<table class="products-table">
+  <thead>
+    <tr>
+      <th class="table-header image-header">Image</th>
+      <th class="table-header name-header">Name</th>
+      <th class="table-header description-header">Description</th>
+      <th class="table-header price-header">Price</th>
+      <th class="table-header category-header">Category</th>
+      <th class="table-header actions-header">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% products.each do |product| %>
+      <tr class="product-row" data-product-id="<%= product.id %>">
+        <td class="image-cell">
+          <span class="display-value">
+            <%= image_tag(product.image_url, size: "100x100") if product.image_url.present? %>
+          </span>
+          <span class="edit-value" style="display: none;">
+            <input type="text" name="image_url" value="<%= product.image_url %>" class="form-control">
+          </span>
+        </td>
+        <td class="name-cell">
+          <span class="display-value"><%= product.name %></span>
+          <span class="edit-value" style="display: none;">
+            <input type="text" name="name" value="<%= product.name %>" class="form-control">
+          </span>
+        </td>
+        <td class="description-cell">
+          <span class="display-value"><%= product.description %></span>
+          <span class="edit-value" style="display: none;">
+            <textarea name="description" class="form-control"><%= product.description %></textarea>
+          </span>
+        </td>
+        <td class="price-cell">
+          <span class="display-value"><%= number_to_currency(product.price) %></span>
+          <span class="edit-value" style="display: none;">
+            <input type="number" name="price" value="<%= product.price %>" step="0.01" class="form-control">
+          </span>
+        </td>
+        <td class="category-cell">
+          <span class="display-value"><%= product.category %></span>
+          <span class="edit-value" style="display: none;">
+            <input type="text" name="category" value="<%= product.category %>" class="form-control">
+          </span>
+        </td>
+        <td class="actions-cell">
+          <div class="display-actions">
+            <button class="btn btn-primary btn-sm edit-product">Change</button>
+            <button class="btn btn-danger btn-sm delete-product">Delete</button>
+          </div>
+          <div class="edit-actions" style="display: none;">
+            <button class="btn btn-success btn-sm save-product">Save</button>
+            <button class="btn btn-secondary btn-sm discard-changes">Discard</button>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Перемещаем обработчик на родительский элемент, который не обновляется
+  document.addEventListener('click', function(e) {
+    const target = e.target;
+    const row = target.closest('.product-row');
+    
+    if (!row) return;
+
+    if (target.classList.contains('edit-product')) {
+      enableEditing(row);
+    } else if (target.classList.contains('save-product')) {
+      saveChanges(row);
+    } else if (target.classList.contains('discard-changes')) {
+      disableEditing(row);
+    } else if (target.classList.contains('delete-product')) {
+      deleteProduct(row);
+    }
+  });
+});
+
+// Остальные функции остаются без изменений
+function enableEditing(row) {
+  row.querySelectorAll('.display-value').forEach(el => el.style.display = 'none');
+  row.querySelectorAll('.edit-value').forEach(el => el.style.display = '');
+  row.querySelector('.display-actions').style.display = 'none';
+  row.querySelector('.edit-actions').style.display = '';
+}
+
+function disableEditing(row) {
+  row.querySelectorAll('.display-value').forEach(el => el.style.display = '');
+  row.querySelectorAll('.edit-value').forEach(el => el.style.display = 'none');
+  row.querySelector('.display-actions').style.display = '';
+  row.querySelector('.edit-actions').style.display = 'none';
+}
+
+function saveChanges(row) {
+  const productId = row.dataset.productId;
+  const formData = new FormData();
+  
+  ['name', 'description', 'price', 'image_url', 'category'].forEach(field => {
+    const input = row.querySelector(`[name="${field}"]`);
+    formData.append(`product[${field}]`, input.value);
+  });
+
+  fetch(`/products/${productId}`, {
+    method: 'PATCH',
+    headers: {
+      'X-CSRF-Token': document.querySelector('[name="csrf-token"]').content,
+      'Accept': 'application/json'
+    },
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      updateProductsTable();
+    } else {
+      alert('Error updating product');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Error updating product');
+  });
+}
+
+function deleteProduct(row) {
+  if (!confirm('Are you sure you want to delete this product?')) return;
+
+  const productId = row.dataset.productId;
+
+  fetch(`/products/${productId}`, {
+    method: 'DELETE',
+    headers: {
+      'X-CSRF-Token': document.querySelector('[name="csrf-token"]').content,
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      updateProductsTable();
+    } else {
+      alert('Error deleting product');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Error deleting product');
+  });
+}
+
+function updateProductsTable() {
+  fetch('/admin?format=js', {
+    headers: {
+      'Accept': 'text/javascript',
+      'X-Requested-With': 'XMLHttpRequest'
+    },
+    credentials: 'same-origin'
+  })
+  .then(response => response.text())
+  .then(javascript => {
+    eval(javascript);
+  })
+  .catch(error => {
+    console.error('Error updating table:', error);
+  });
+}
+</script>

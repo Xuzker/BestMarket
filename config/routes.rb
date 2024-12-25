@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   # Ресурсы для продуктов
-  resources :products, only: [:index, :show] do
+  resources :products, only: [:index, :show, :create, :update, :destroy] do
     post 'add_to_cart', to: 'cart#add', as: 'add_to_cart' # Добавление товара в корзину
   end
 
@@ -23,4 +23,7 @@ Rails.application.routes.draw do
 
   # Настройка маршрутов для Devise
   devise_for :users, controllers: { passwords: 'users/passwords' }
+
+  # Админ панель
+  get '/admin', to: 'admin#index', as: 'admin'
 end

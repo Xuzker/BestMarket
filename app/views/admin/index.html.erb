@@ -1,0 +1,100 @@
+<!-- Modal for adding a product -->
+<div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      <% if @product && @product.errors.any? %>
+        <div class="alert alert-danger">
+          <h4>Errors:</h4>
+          <ul>
+            <% @product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+        <%= form_with(model: Product.new, local: false, url: products_path, remote: true) do |form| %>
+          <div class="form-group">
+            <%= form.label :name %>
+            <%= form.text_field :name, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :description %>
+            <%= form.text_area :description, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :price %>
+            <%= form.number_field :price, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :image_url %>
+            <%= form.text_field :image_url, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :category %>
+            <div class="input-group">
+              <%= form.select :category, options_for_select(@categories), { include_blank: 'Select a category' }, class: 'form-control', id: 'category-select' %>
+              <input type="text" class="form-control" placeholder="New category" id="new-category" name="new_category" disabled />
+            </div>
+          </div>
+
+          <%= form.submit 'Create Product', class: 'btn btn-success' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render 'layouts/header' %>
+
+<main>
+  <div>
+    <h2>Search by Product Name</h2>
+    <%= form_with url: admin_path, method: :get, local: false do %>
+      <input type="text" name="query" placeholder="Enter product name..." value="<%= params[:query] %>">
+      <button type="submit">Search</button>
+    <% end %>
+  </div>
+
+  <div>
+    <h2>Sort by Category</h2>
+    <%= form_with url: admin_path, method: :get, local: false, id: 'category-filter-form' do %>
+      <%= select_tag :category, options_for_select(@categories, params[:category]), prompt: "Select a category", onchange: 'this.form.submit();' %>
+    <% end %>
+  </div>
+
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProductModal">
+    Add Product
+  </button>
+
+  <div id="products-table">
+    <%= render 'products_table', products: @products %>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2024 BestMarket</p>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const categorySelect = document.getElementById('category-select');
+    const newCategoryInput = document.getElementById('new-category');
+
+    categorySelect.addEventListener('change', function() {
+      newCategoryInput.disabled = categorySelect.value !== '';
+    });
+  });
+</script>
