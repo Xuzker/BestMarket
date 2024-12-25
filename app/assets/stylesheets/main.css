@@ -360,6 +360,7 @@ footer a:hover {
 .dropdown-menu {
   display: none;
   position: absolute;
+  transform: translateX(-130px);
   top: 100%;
   right: 0;
   background-color: #d2741b; /* Цвет фона выпадающего меню */
@@ -467,6 +468,31 @@ footer a:hover {
   text-decoration: underline;
 }
 
+/* Заголовок для страницы Корзины */
+.cart-page h1 {
+  text-align: center; /* Выравнивание текста по центру */
+  font-size: 2.5em; /* Увеличенный размер шрифта */
+  font-weight: bold; /* Жирный шрифт */
+  color: #4b3b2f; /* Цвет шрифта (темно-коричневый) */
+  margin-bottom: 30px; /* Отступ снизу */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
+}
+
+/* Дополнительные стили для корзины */
+.cart-page {
+  padding: 20px;
+  background-color: #f4e1c1; /* Цвет фона страницы корзины */
+  min-width: 1200px;
+  margin: 0 auto;
+}
+
+
+#total-price {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  color: #d2741b; /* Цвет общей суммы */
+}
 #cart-items {
   display: flex; /* или display: grid; */
   flex-direction: column;
@@ -506,10 +532,11 @@ footer a:hover {
 /* Информация о товаре */
 .cart-item-info {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: column; /* Изменено с column на row */
+  gap: 10px; /* Расстояние между элементами */
   width: 60%; /* Ширина информации о товаре */
 }
+
 
 .cart-item h3 {
   font-size: 1.4em;
@@ -519,6 +546,7 @@ footer a:hover {
 .cart-item p {
   font-size: 1.1em;
   color: #6b4f33;
+  margin: 0;
 }
 
 /* Действия с товаром (изменение количества) */
@@ -556,14 +584,16 @@ footer a:hover {
   outline: none;
 }
 
-/* Специальные стили для кнопок плюса и минуса */
-.decrease {
-  background-color: #e34e4d; /* Красный для уменьшения */
+.quantity-button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
-.increase {
-  background-color: #4caf50; /* Зеленый для увеличения */
+.quantity-button.decrease[disabled] {
+  background-color: #f8d7da;
 }
+
 
 /* Стили для отображения общей стоимости */
 #total-price {
@@ -576,7 +606,7 @@ footer a:hover {
   color: #4b3b2f;
 }
 
-#total-price p {
+#total-price h2 {
   font-size: 1.2em;
   color: #d2741b;
   font-weight: bold;
@@ -664,4 +694,115 @@ footer a:hover {
 .image-cell img {
   max-width: 100%;
   height: auto;
+}
+
+.remove-item-button {
+  background-color: #d2741b; /* Основной оранжевый цвет */
+  color: white; /* Белый текст */
+  padding: 10px 20px; /* Отступы */
+  border-radius: 5px; /* Скругленные углы */
+  border: none; /* Убираем стандартную рамку */
+  font-size: 1.1em; /* Размер шрифта */
+  font-weight: bold; /* Жирный текст */
+  cursor: pointer; /* Курсор в виде руки */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Плавный переход фона и масштаба */
+}
+
+.remove-item-button:hover {
+  background-color: #b35814; /* Темный оранжевый при наведении */
+  transform: scale(1.05); /* Немного увеличиваем кнопку при наведении */
+}
+
+.remove-item-button:focus {
+  outline: none; /* Убираем рамку при фокусе */
+}
+
+.remove-item-button:active {
+  transform: scale(1); /* Убираем увеличение при нажатии */
+  background-color: #a35c11; /* Еще темнее при нажатии */
+}
+
+.remove-item-button[disabled] {
+  background-color: #ccc; /* Светло-серый цвет для отключенной кнопки */
+  cursor: not-allowed; /* Курсор "не доступно" */
+  opacity: 0.5; /* Полупрозрачный цвет */
+}
+
+/* Визуальное улучшение для кнопки Удалить */
+.remove-item-button {
+  padding: 10px 15px;
+  background-color: #e14e3a; /* Красный фон */
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+/* Стиль для кнопки при наведении */
+.remove-item-button:hover {
+  background-color: #c83b1f; /* Более темный красный при наведении */
+}
+
+/* Стиль для сообщения о пустой корзине */
+.empty-cart-message {
+  background-color: #fff0e6; /* Легкий кремовый фон, напоминающий светлый оранжевый */
+  color: #4b3b2f; /* Темно-коричневый цвет текста (основной акцент на сайте) */
+  padding: 20px;
+  border-radius: 15px; /* Скругленные углы для плавного, мягкого эффекта */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
+  font-size: 1.5em; /* Увеличенный размер шрифта */
+  font-weight: bold; /* Жирный шрифт для выделения */
+  text-align: center; /* Центрируем текст */
+  margin: 30px auto; /* Центрируем контейнер по горизонтали */
+  width: 90%; /* Ограничиваем ширину контейнера для гибкости */
+  max-width: 600px; /* Ограничиваем максимальную ширину */
+  border: 1px solid #d2b097; /* Светлая рамка в тон фону */
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Плавное изменение фона и размера */
+}
+
+.empty-cart-message:hover {
+  background-color: #f9d7b6; /* Немного темнее фон при наведении */
+  transform: scale(1.05); /* Легкое увеличение сообщения при наведении */
+}
+
+.empty-cart-message a {
+  color: #d2741b; /* Цвет ссылки в оранжевом оттенке */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease; /* Плавное изменение цвета при наведении */
+}
+
+.empty-cart-message a:hover {
+  color: #b35814; /* Тёмно-оранжевый цвет ссылки при наведении */
+  text-decoration: underline; /* Подчеркивание при наведении */
+}
+
+/* Стиль для кнопки или действия внутри сообщения (если нужно добавить) */
+.empty-cart-message .action-button {
+  background-color: #d2741b; /* Оранжевый цвет кнопки */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.empty-cart-message .action-button:hover {
+  background-color: #b35814; /* Более темный оранжевый при наведении */
+}
+/* Стили для ссылки в сообщении "Ваша корзина пуста" */
+.empty-cart-link {
+  color: #4b3b2f; /* Цвет текста, как у обычного текста */
+  text-decoration: none; /* Убираем подчеркивание */
+  font-weight: bold; /* Сделаем текст жирным */
+  transition: color 0.3s ease; /* Плавное изменение цвета при наведении */
+}
+
+.empty-cart-link:hover {
+  color: #d2741b; /* Оранжевый цвет при наведении */
+  text-decoration: underline; /* Добавляем подчеркивание при наведении */
 }

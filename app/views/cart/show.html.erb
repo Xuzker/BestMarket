@@ -1,14 +1,21 @@
-<h1>Корзина</h1>
-<% if @cart_items.any? %>
-  <div id="cart-items">
-    <% @cart_items.each do |item| %>
-      <%= render partial: "cart_items/cart_item", locals: { item: item } %>
-    <% end %>
-  </div>
+<!-- Страница корзины -->
+<div class="cart-page">
+  <h1>Корзина</h1>
 
-  <div id="total-price">
-    <%= render partial: "cart/total_price", locals: { total_price: @cart_items.sum { |item| item.product.price * item.quantity } } %>
-  </div>
-<% else %>
-  <p>Ваша корзина пуста.</p>
-<% end %>
+  <% if @cart_items.any? %>
+    <div id="cart-items">
+      <% @cart_items.each do |item| %>
+        <%= render partial: "cart_items/cart_item", locals: { item: item } %>
+      <% end %>
+    </div>
+
+    <div id="total-price">
+      <%= render partial: "cart/total_price", locals: { total_price: @cart_items.sum { |item| item.product.price * item.quantity } } %>
+    </div>
+    <%= button_to 'Заказать', checkout_cart_path(address: @user.address), method: :post %>
+  <% else %>
+    <div id="empty-cart-message" class="empty-cart-message">
+      <a href="<%= root_path %>" class="empty-cart-link">Вернуться на главную</a>
+    </div>
+  <% end %>
+</div>
