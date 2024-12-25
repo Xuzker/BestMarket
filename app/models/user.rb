@@ -2,6 +2,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :address, presence: true
+  has_many :orders
 
   def send_new_password
     new_password = Devise.friendly_token.first(8) # Генерация нового пароля

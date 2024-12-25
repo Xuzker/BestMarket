@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   # Отображение профиля пользователя
   def show
     @user = current_user
+    @orders = @user.orders.includes(:order_items) # Получаем заказы пользователя
   end
 
   # Форма редактирования профиля

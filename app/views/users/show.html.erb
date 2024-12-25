@@ -3,4 +3,22 @@
 <p><strong>Email:</strong> <%= @user.email %></p>
 <p><strong>Адрес:</strong> <%= @user.address %></p>
 
+<h2>История заказов</h2>
+<% if @orders.any? %>
+  <ul>
+    <% @orders.each do |order| %>
+      <li>
+        Заказ №<%= order.id %> от <%= order.date.strftime("%d.%m.%Y") %>
+        <ul>
+          <% order.order_items.each do |item| %>
+            <li><%= item.product.name %> - <%= item.quantity %> шт. по <%= item.price %> руб.</li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>У вас нет заказов.</p>
+<% end %>
+
 <%= link_to 'Редактировать профиль', edit_profile_path %>
