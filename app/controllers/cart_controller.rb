@@ -5,6 +5,25 @@ class CartController < ApplicationController
   def show
     @cart_items = current_user.cart_items
     @total_price = @cart_items.sum { |item| item.product.price * item.quantity }
+    @user = current_user
+  end
+
+  def checkout
+    @order = Order.new(date: Time.current, user: current_user, address: params[:address])
+
+    if @order.save
+      current_user.cart_items.each do |cart_item|
+        @order.order_items.create(
+          product: cart_item.product,
+          price: cart_item.product.price,
+          quantity: cart_item.quantity
+        )
+      end
+      current_user.cart_items.destroy_all # Очистка корзины после оформления заказа
+      redirect_to orders_path, notice: 'Заказ успешно оформлен.'
+    else
+      redirect_to cart_path, alert: 'Не удалось оформить заказ.'
+    end
   end
 
   # Добавление товара в корзину

@@ -12,10 +12,10 @@
     <div id="total-price">
       <%= render partial: "cart/total_price", locals: { total_price: @cart_items.sum { |item| item.product.price * item.quantity } } %>
     </div>
+    <%= button_to 'Заказать', checkout_cart_path(address: @user.address), method: :post %>
   <% else %>
     <div id="empty-cart-message" class="empty-cart-message">
       <a href="<%= root_path %>" class="empty-cart-link">Вернуться на главную</a>
     </div>
-
   <% end %>
 </div>
