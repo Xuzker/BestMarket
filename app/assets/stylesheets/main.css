@@ -39,7 +39,6 @@ nav .logo h1 {
   font-size: 1.5rem;
   text-align: center;
   color: #fff;
-
 }
 
 .logo_button {
@@ -50,13 +49,9 @@ nav .logo h1 {
   text-decoration: none;
 }
 
-/* Также добавим стиль для h1 внутри логотипа, чтобы сохранить цвет */
 .logo_button h1 {
   color: #fff;
 }
-
-
-
 
 /* Поисковая строка */
 .search-bar {
@@ -96,7 +91,7 @@ nav .logo h1 {
   background-color: #fff;
   color: #4b3b2f;
   appearance: none;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%234b3b2f"><path d="M7 10l5 5 5-5z"/></svg>'); /* Стрелка вниз */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%234b3b2f"><path d="M7 10l5 5 5-5z"/></svg>');
   background-repeat: no-repeat;
   background-position: right 10px center;
   background-size: 12px;
@@ -106,7 +101,6 @@ nav .logo h1 {
   outline: none;
   border-color: #d2741b;
 }
-
 
 /* Иконки */
 .nav-icons ul {
@@ -207,37 +201,31 @@ footer a:hover {
   text-decoration: underline;
 }
 
-
-
-/* Центрирование формы */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Занимает весь экран */
-  background-color: #f4e1c1; /* Цвет фона */
+  height: 100vh;
+  background-color: #f4e1c1;
   margin: 0;
   padding: 0;
 }
 
-/* Стиль самой формы */
 .login-form {
-  background-color: #fff; /* Белый фон */
+  background-color: #fff;
   padding: 30px;
-  border-radius: 10px; /* Скругленные углы */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
-  max-width: 400px; /* Ограничение ширины */
+  max-width: 400px;
 }
 
-/* Заголовок формы */
 .login-form h2 {
   text-align: center;
-  color: #4b3b2f; /* Темно-коричневый цвет */
+  color: #4b3b2f;
   margin-bottom: 20px;
 }
 
-/* Поля ввода */
 .login-form .field label {
   display: block;
   margin-bottom: 5px;
@@ -251,24 +239,22 @@ footer a:hover {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid #d2b097; /* Светло-коричневая рамка */
-  border-radius: 5px; /* Скругленные углы */
+  border: 1px solid #d2b097;
+  border-radius: 5px;
   font-size: 1em;
 }
 
-/* Чекбокс */
 .login-form .field input[type="checkbox"] {
   margin-right: 5px;
 }
 
-/* Кнопка отправки */
 .login-form .actions input[type="submit"] {
   width: 100%;
   padding: 10px;
-  background-color: #d2741b; /* Оранжевый цвет кнопки */
+  background-color: #d2741b;
   color: #fff;
   border: none;
-  border-radius: 5px; /* Скругленные углы */
+  border-radius: 5px;
   font-size: 1em;
   font-weight: bold;
   cursor: pointer;
@@ -276,16 +262,14 @@ footer a:hover {
 }
 
 .login-form .actions input[type="submit"]:hover {
-  background-color: #b35814; /* Темный оранжевый при наведении */
-
+  background-color: #b35814;
 }
 
-/* Ссылки (например, "Sign up" или "Forgot password?") */
 .login-form a {
   display: block;
   text-align: center;
   margin-top: 15px;
-  color: #6b4f33; /* Светло-коричневый цвет */
+  color: #6b4f33;
   text-decoration: none;
   font-size: 0.9em;
 }
@@ -293,7 +277,6 @@ footer a:hover {
 .login-form a:hover {
   text-decoration: underline;
 }
-
 
 .container {
   display: flex;
@@ -327,22 +310,22 @@ footer a:hover {
 }
 
 .card .button {
-  background-color: #d2741b; /* Основной цвет фона кнопки */
-  color: white; /* Белый цвет текста */
-  padding: 10px 20px; /* Отступы для кнопки */
-  border: none; /* Убираем рамку */
-  border-radius: 5px; /* Скругление углов */
-  font-size: 16px; /* Размер шрифта */
-  cursor: pointer; /* Курсор в виде руки при наведении */
-  transition: background-color 0.3s ease; /* Плавное изменение цвета фона */
+  background-color: #d2741b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .card .button:hover {
-  background-color: #b35814; /* Цвет фона при наведении */
+  background-color: #b35814;
 }
 
 .card .button:focus {
-  outline: none; /* Убираем рамку при фокусе */
+  outline: none;
 }
 
 .forgot-password-links {
@@ -359,14 +342,13 @@ footer a:hover {
   text-decoration: underline;
 }
 
-
 .profile-menu {
   position: relative;
   display: inline-block;
 }
 
 .profile-menu a {
-  text-decoration: none; /* Убираем подчеркивание */
+  text-decoration: none;
 }
 
 .dropdown-menu {
@@ -375,11 +357,11 @@ footer a:hover {
   transform: translateX(-130px);
   top: 100%;
   right: 0;
-  background-color: #d2741b; /* Цвет фона выпадающего меню */
-  border: none; /* Убираем границу */
+  background-color: #d2741b;
+  border: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  border-radius: 0; /* Убираем закругленные углы */
+  border-radius: 0;
 }
 
 .profile-menu:hover .dropdown-menu {
@@ -392,22 +374,21 @@ footer a:hover {
   text-decoration: none;
   color: #fff;
   display: block;
-  width: 100%; /* Занимает всю ширину родительского контейнера */
-  box-sizing: border-box; /* Учитывает отступы и границы в ширине */
+  width: 100%;
+  box-sizing: border-box;
   transition: background-color 0.3s;
-  border: none; /* Убираем границу у элементов меню */
-  background-color: transparent; /* Убираем белый фон по умолчанию */
-
+  border: none;
+  background-color: transparent;
 }
 
 .dropdown-item:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон при наведении */
-
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .dropdown-item:not(:last-child) {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Разделитель между элементами */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
+
 .signup-container {
   display: flex;
   flex-direction: column;
@@ -482,36 +463,35 @@ footer a:hover {
 
 /* Заголовок для страницы Корзины */
 .cart-page h1 {
-  text-align: center; /* Выравнивание текста по центру */
-  font-size: 2.5em; /* Увеличенный размер шрифта */
-  font-weight: bold; /* Жирный шрифт */
-  color: #4b3b2f; /* Цвет шрифта (темно-коричневый) */
-  margin-bottom: 30px; /* Отступ снизу */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
+  text-align: center;
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #4b3b2f;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Дополнительные стили для корзины */
 .cart-page {
   padding: 20px;
-  background-color: #f4e1c1; /* Цвет фона страницы корзины */
+  background-color: #f4e1c1;
   min-width: 1200px;
   margin: 0 auto;
 }
-
 
 #total-price {
   font-size: 1.2em;
   font-weight: bold;
   text-align: center;
-  color: #d2741b; /* Цвет общей суммы */
+  color: #d2741b;
 }
+
 #cart-items {
-  display: flex; /* или display: grid; */
+  display: flex;
   flex-direction: column;
-  gap: 20px; /* Отступы между карточками */
+  gap: 20px;
   margin: 20px 0;
 }
-/* Контейнер для товара в корзине */
+
 .cart-item {
   display: flex;
   align-items: center;
@@ -524,31 +504,28 @@ footer a:hover {
 }
 
 .cart-item:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Легкое увеличение тени при наведении */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Изображение товара */
 .cart-item-image {
-  width: 80px; /* Ширина изображения */
-  height: 80px; /* Высота изображения */
+  width: 80px;
+  height: 80px;
   overflow: hidden;
-  border-radius: 8px; /* Скругленные углы для изображения */
+  border-radius: 8px;
 }
 
 .cart-item-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Изображение будет заполнять контейнер, сохраняя пропорции */
+  object-fit: cover;
 }
 
-/* Информация о товаре */
 .cart-item-info {
   display: flex;
-  flex-direction: column; /* Изменено с column на row */
-  gap: 10px; /* Расстояние между элементами */
-  width: 60%; /* Ширина информации о товаре */
+  flex-direction: column;
+  gap: 10px;
+  width: 60%;
 }
-
 
 .cart-item h3 {
   font-size: 1.4em;
@@ -561,7 +538,6 @@ footer a:hover {
   margin: 0;
 }
 
-/* Действия с товаром (изменение количества) */
 .cart-item-actions {
   display: flex;
   gap: 10px;
@@ -569,13 +545,12 @@ footer a:hover {
   align-items: center;
 }
 
-/* Кнопки для изменения количества товара */
 .quantity-button {
   padding: 10px;
   background-color: #d2741b;
   color: white;
   border: none;
-  border-radius: 50%; /* Сделаем кнопки круглыми */
+  border-radius: 50%;
   cursor: pointer;
   font-size: 1.2em;
   width: 40px;
@@ -589,7 +564,7 @@ footer a:hover {
 
 .quantity-button:hover {
   background-color: #b35814;
-  transform: scale(1.1); /* Увеличение кнопки при наведении */
+  transform: scale(1.1);
 }
 
 .quantity-button:focus {
@@ -606,8 +581,6 @@ footer a:hover {
   background-color: #f8d7da;
 }
 
-
-/* Стили для отображения общей стоимости */
 #total-price {
   margin-top: 30px;
   text-align: center;
@@ -624,14 +597,12 @@ footer a:hover {
   font-weight: bold;
 }
 
-/* Пустая корзина */
 #cart-items p {
   font-size: 1.2em;
   color: #6b4f33;
   text-align: center;
 }
 
-/* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
   .cart-item {
     flex-direction: column;
@@ -709,41 +680,40 @@ footer a:hover {
 }
 
 .remove-item-button {
-  background-color: #d2741b; /* Основной оранжевый цвет */
-  color: white; /* Белый текст */
-  padding: 10px 20px; /* Отступы */
-  border-radius: 5px; /* Скругленные углы */
-  border: none; /* Убираем стандартную рамку */
-  font-size: 1.1em; /* Размер шрифта */
-  font-weight: bold; /* Жирный текст */
-  cursor: pointer; /* Курсор в виде руки */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Плавный переход фона и масштаба */
+  background-color: #d2741b;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .remove-item-button:hover {
-  background-color: #b35814; /* Темный оранжевый при наведении */
-  transform: scale(1.05); /* Немного увеличиваем кнопку при наведении */
+  background-color: #b35814;
+  transform: scale(1.05);
 }
 
 .remove-item-button:focus {
-  outline: none; /* Убираем рамку при фокусе */
+  outline: none;
 }
 
 .remove-item-button:active {
-  transform: scale(1); /* Убираем увеличение при нажатии */
-  background-color: #a35c11; /* Еще темнее при нажатии */
+  transform: scale(1);
+  background-color: #a35c11;
 }
 
 .remove-item-button[disabled] {
-  background-color: #ccc; /* Светло-серый цвет для отключенной кнопки */
-  cursor: not-allowed; /* Курсор "не доступно" */
-  opacity: 0.5; /* Полупрозрачный цвет */
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
-/* Визуальное улучшение для кнопки Удалить */
 .remove-item-button {
   padding: 10px 15px;
-  background-color: #e14e3a; /* Красный фон */
+  background-color: #e14e3a;
   color: white;
   border-radius: 5px;
   border: none;
@@ -752,48 +722,45 @@ footer a:hover {
   transition: all 0.3s ease;
 }
 
-/* Стиль для кнопки при наведении */
 .remove-item-button:hover {
-  background-color: #c83b1f; /* Более темный красный при наведении */
+  background-color: #c83b1f;
 }
 
-/* Стиль для сообщения о пустой корзине */
 .empty-cart-message {
-  background-color: #fff0e6; /* Легкий кремовый фон, напоминающий светлый оранжевый */
-  color: #4b3b2f; /* Темно-коричневый цвет текста (основной акцент на сайте) */
+  background-color: #fff0e6;
+  color: #4b3b2f;
   padding: 20px;
-  border-radius: 15px; /* Скругленные углы для плавного, мягкого эффекта */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
-  font-size: 1.5em; /* Увеличенный размер шрифта */
-  font-weight: bold; /* Жирный шрифт для выделения */
-  text-align: center; /* Центрируем текст */
-  margin: 30px auto; /* Центрируем контейнер по горизонтали */
-  width: 90%; /* Ограничиваем ширину контейнера для гибкости */
-  max-width: 600px; /* Ограничиваем максимальную ширину */
-  border: 1px solid #d2b097; /* Светлая рамка в тон фону */
-  transition: transform 0.3s ease, background-color 0.3s ease; /* Плавное изменение фона и размера */
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  margin: 30px auto;
+  width: 90%;
+  max-width: 600px;
+  border: 1px solid #d2b097;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .empty-cart-message:hover {
-  background-color: #f9d7b6; /* Немного темнее фон при наведении */
-  transform: scale(1.05); /* Легкое увеличение сообщения при наведении */
+  background-color: #f9d7b6;
+  transform: scale(1.05);
 }
 
 .empty-cart-message a {
-  color: #d2741b; /* Цвет ссылки в оранжевом оттенке */
+  color: #d2741b;
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s ease; /* Плавное изменение цвета при наведении */
+  transition: color 0.3s ease;
 }
 
 .empty-cart-message a:hover {
-  color: #b35814; /* Тёмно-оранжевый цвет ссылки при наведении */
-  text-decoration: underline; /* Подчеркивание при наведении */
+  color: #b35814;
+  text-decoration: underline;
 }
 
-/* Стиль для кнопки или действия внутри сообщения (если нужно добавить) */
 .empty-cart-message .action-button {
-  background-color: #d2741b; /* Оранжевый цвет кнопки */
+  background-color: #d2741b;
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
@@ -804,25 +771,25 @@ footer a:hover {
 }
 
 .empty-cart-message .action-button:hover {
-  background-color: #b35814; /* Более темный оранжевый при наведении */
+  background-color: #b35814;
 }
-/* Стили для ссылки в сообщении "Ваша корзина пуста" */
+
 .empty-cart-link {
-  color: #4b3b2f; /* Цвет текста, как у обычного текста */
-  text-decoration: none; /* Убираем подчеркивание */
-  font-weight: bold; /* Сделаем текст жирным */
-  transition: color 0.3s ease; /* Плавное изменение цвета при наведении */
+  color: #4b3b2f;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 .empty-cart-link:hover {
-  color: #d2741b; /* Оранжевый цвет при наведении */
-  text-decoration: underline; /* Добавляем подчеркивание при наведении */
+  color: #d2741b;
+  text-decoration: underline;
 }
 
 .checkout-button {
   display: inline-block;
   padding: 12px 24px;
-  background-color: #c4a484;  /* цвет как у шапки BestMarket */
+  background-color: #c4a484;
   color: white;
   border: none;
   border-radius: 4px;
@@ -836,7 +803,7 @@ footer a:hover {
 }
 
 .checkout-button:hover {
-  background-color: #b39476;  /* немного темнее при наведении */
+  background-color: #b39476;
   transform: translateY(-1px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
@@ -848,14 +815,14 @@ footer a:hover {
 
 header {
   background-color: #c4a484;
-  height: 60px; /* фиксированная высота */
+  height: 60px;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100%; /* занимает всю высоту header */
+  height: 100%;
   padding: 0 20px;
 }
 
@@ -866,7 +833,7 @@ nav {
 }
 
 .logo h1 {
-  margin: 0; /* убираем стандартные отступы у заголовка */
+  margin: 0;
   font-size: 24px;
   color: white;
 }
@@ -889,7 +856,7 @@ nav {
 .search-bar {
   display: flex;
   align-items: center;
-  height: 40px; /* фиксированная высота поисковой строки */
+  height: 40px;
 }
 
 .profile-container {
@@ -977,7 +944,7 @@ nav {
   transform: rotate(180deg);
 }
 
-.modal {
+.search-modal {
   display: none;
   position: fixed;
   top: 0;
@@ -989,7 +956,7 @@ nav {
   animation: fadeIn 0.3s;
 }
 
-.modal-content {
+.search-modal .modal-content {
   background: #fff;
   margin: 10% auto;
   padding: 30px;
@@ -1000,7 +967,7 @@ nav {
   animation: slideIn 0.3s;
 }
 
-.modal-header {
+.search-modal .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1009,7 +976,7 @@ nav {
   border-bottom: 1px solid #eee;
 }
 
-.modal-header h2 {
+.search-modal .modal-header h2 {
   font-size: 24px;
   color: #333;
   margin: 0;
@@ -1039,7 +1006,6 @@ nav {
   font-weight: 500;
   font-size: 14px;
 }
-
 
 .form-input:focus {
   border-color: #007bff;
