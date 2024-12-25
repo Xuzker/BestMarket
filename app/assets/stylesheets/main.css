@@ -467,6 +467,31 @@ footer a:hover {
   text-decoration: underline;
 }
 
+/* Заголовок для страницы Корзины */
+.cart-page h1 {
+  text-align: center; /* Выравнивание текста по центру */
+  font-size: 2.5em; /* Увеличенный размер шрифта */
+  font-weight: bold; /* Жирный шрифт */
+  color: #4b3b2f; /* Цвет шрифта (темно-коричневый) */
+  margin-bottom: 30px; /* Отступ снизу */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
+}
+
+/* Дополнительные стили для корзины */
+.cart-page {
+  padding: 20px;
+  background-color: #f4e1c1; /* Цвет фона страницы корзины */
+  min-width: 1200px;
+  margin: 0 auto;
+}
+
+
+#total-price {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  color: #d2741b; /* Цвет общей суммы */
+}
 #cart-items {
   display: flex; /* или display: grid; */
   flex-direction: column;
@@ -506,10 +531,11 @@ footer a:hover {
 /* Информация о товаре */
 .cart-item-info {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: column; /* Изменено с column на row */
+  gap: 10px; /* Расстояние между элементами */
   width: 60%; /* Ширина информации о товаре */
 }
+
 
 .cart-item h3 {
   font-size: 1.4em;
@@ -519,6 +545,7 @@ footer a:hover {
 .cart-item p {
   font-size: 1.1em;
   color: #6b4f33;
+  margin: 0;
 }
 
 /* Действия с товаром (изменение количества) */
@@ -556,15 +583,6 @@ footer a:hover {
   outline: none;
 }
 
-/* Специальные стили для кнопок плюса и минуса */
-.decrease {
-  background-color: #e34e4d; /* Красный для уменьшения */
-}
-
-.increase {
-  background-color: #4caf50; /* Зеленый для увеличения */
-}
-
 /* Стили для отображения общей стоимости */
 #total-price {
   margin-top: 30px;
@@ -576,7 +594,7 @@ footer a:hover {
   color: #4b3b2f;
 }
 
-#total-price p {
+#total-price h2 {
   font-size: 1.2em;
   color: #d2741b;
   font-weight: bold;
