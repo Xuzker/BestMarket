@@ -46,6 +46,17 @@ nav .logo h1 {
   text-decoration: none;
 }
 
+.logo_button:hover {
+  text-decoration: none;
+}
+
+/* Также добавим стиль для h1 внутри логотипа, чтобы сохранить цвет */
+.logo_button h1 {
+  color: #fff;
+}
+
+
+
 
 /* Поисковая строка */
 .search-bar {
@@ -184,6 +195,7 @@ footer {
   color: #fff;
   font-size: 0.9em;
   bottom: 0;
+  margin-top: auto;
 }
 
 footer a {
@@ -805,4 +817,77 @@ footer a:hover {
 .empty-cart-link:hover {
   color: #d2741b; /* Оранжевый цвет при наведении */
   text-decoration: underline; /* Добавляем подчеркивание при наведении */
+}
+
+.checkout-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #c4a484;  /* цвет как у шапки BestMarket */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+  margin: 20px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-button:hover {
+  background-color: #b39476;  /* немного темнее при наведении */
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.checkout-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  background-color: #c4a484;
+  height: 60px; /* фиксированная высота */
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%; /* занимает всю высоту header */
+  padding: 0 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo h1 {
+  margin: 0; /* убираем стандартные отступы у заголовка */
+  font-size: 24px;
+  color: white;
+}
+
+.nav-icons {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-icons ul {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  height: 100%;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  height: 40px; /* фиксированная высота поисковой строки */
 }

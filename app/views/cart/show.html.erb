@@ -1,21 +1,54 @@
-<!-- Страница корзины -->
-<div class="cart-page">
-  <h1>Корзина</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart - BestMarket</title>
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="/" class="logo_button" id="logo-button">
+          <h1>BestMarket</h1>
+        </a>
+      </div>
+    </nav>
+  </header>
 
-  <% if @cart_items.any? %>
-    <div id="cart-items">
-      <% @cart_items.each do |item| %>
-        <%= render partial: "cart_items/cart_item", locals: { item: item } %>
-      <% end %>
-    </div>
+  <div class="cart-page">
+    <h1>Shopping Cart</h1>
 
-    <div id="total-price">
-      <%= render partial: "cart/total_price", locals: { total_price: @cart_items.sum { |item| item.product.price * item.quantity } } %>
-    </div>
-    <%= button_to 'Заказать', checkout_cart_path(address: @user.address), method: :post %>
-  <% else %>
-    <div id="empty-cart-message" class="empty-cart-message">
-      <a href="<%= root_path %>" class="empty-cart-link">Вернуться на главную</a>
-    </div>
-  <% end %>
-</div>
+    <% if @cart_items.any? %>
+      <div id="cart-items">
+        <% @cart_items.each do |item| %>
+          <%= render partial: "cart_items/cart_item", locals: { item: item } %>
+        <% end %>
+      </div>
+
+      <div id="total-price">
+        <%= render partial: "cart/total_price", locals: { total_price: @cart_items.sum { |item| item.product.price * item.quantity } } %>
+      </div>
+      
+      <div class="cart-buttons">      
+        <%= button_to 'Proceed to Checkout', checkout_cart_path(address: @user.address), 
+            method: :post, 
+            class: "checkout-button" %>
+      </div>
+    <% else %>
+      <div id="empty-cart-message" class="empty-cart-message">
+        <p>Your cart is empty</p>
+        <%= link_to root_path, class: "bestmarket-button" do %>
+          <i class="fas fa-store"></i> Continue Shopping
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</body>
+<footer>
+  <p>&copy; 2024 BestMarket</p>
+</footer>
+
+</html>
