@@ -13,6 +13,9 @@
       <%= render partial: "cart/total_price", locals: { total_price: @cart_items.sum { |item| item.product.price * item.quantity } } %>
     </div>
   <% else %>
-    <p>Ваша корзина пуста.</p>
+    <div id="empty-cart-message" class="empty-cart-message">
+      <a href="<%= root_path %>" class="empty-cart-link">Вернуться на главную</a>
+    </div>
+
   <% end %>
 </div>

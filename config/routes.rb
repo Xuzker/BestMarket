@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   # Корзина
   resource :cart, only: [:show], controller: 'cart' do
-    resources :cart_items, only: [:destroy], shallow: true # Для удаления товара из корзины
+    resources :cart_items, only: [:destroy, :update], shallow: true # Для удаления товара из корзины
   end
 
   # Оформление заказа
