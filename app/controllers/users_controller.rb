@@ -25,6 +25,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :address) # Добавьте другие атрибуты, которые хотите редактировать
+    params.require(:user).permit(:email, :address)
   end
 end
